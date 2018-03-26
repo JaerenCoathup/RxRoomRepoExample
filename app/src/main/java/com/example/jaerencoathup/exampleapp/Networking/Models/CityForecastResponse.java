@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * Created by jaerencoathup on 05/05/2017.
+ * Created by jaerencoathup on 05/05/2017.ff
  */
 
 public class CityForecastResponse {
