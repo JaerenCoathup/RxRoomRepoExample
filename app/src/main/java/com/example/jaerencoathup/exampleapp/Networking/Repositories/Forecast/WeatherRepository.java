@@ -1,6 +1,6 @@
 package com.example.jaerencoathup.exampleapp.Networking.Repositories.Forecast;
 
-import com.example.jaerencoathup.exampleapp.Persistence.ForecastData;
+import com.example.jaerencoathup.exampleapp.Persistence.WeatherData;
 import io.reactivex.Observable;
 
 /**
@@ -8,5 +8,5 @@ import io.reactivex.Observable;
  */
 
 public interface WeatherRepository {
-    public Observable<ForecastData> getForecastData();
+    public Observable<WeatherData> getForecastData(String city);
 }

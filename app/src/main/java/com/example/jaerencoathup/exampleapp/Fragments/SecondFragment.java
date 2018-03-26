@@ -1,23 +1,19 @@
 package com.example.jaerencoathup.exampleapp.Fragments;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.jaerencoathup.exampleapp.Dagger.Modules.MainModule;
+import com.example.jaerencoathup.exampleapp.Dagger.Modules.SecondModule;
 import com.example.jaerencoathup.exampleapp.ExampleApplication;
-import com.example.jaerencoathup.exampleapp.Mvp.Main;
+import com.example.jaerencoathup.exampleapp.Mvp.Second;
 import com.example.jaerencoathup.exampleapp.R;
-import com.example.jaerencoathup.exampleapp.RealmObjects.User;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SecondFragment extends ExampleFragment<Main.Presenter> implements Main.View {
+public class SecondFragment extends ExampleFragment<Second.Presenter> implements Second.View {
 
     @BindView(R.id.tv_id)
     TextView tvId;
@@ -44,7 +40,7 @@ public class SecondFragment extends ExampleFragment<Main.Presenter> implements M
 
     private void injectDependencies() {
         ExampleApplication.getApplicationComponent()
-                .plus(new MainModule(this))
+                .plus(new SecondModule(this))
                 .inject(this);
     }
 
@@ -52,10 +48,4 @@ public class SecondFragment extends ExampleFragment<Main.Presenter> implements M
         super.onStop();
     }
 
-    @Override
-    public void showUser(User user) {
-        tvId.setText(user.getId() + "");
-        tvLogin.setText(user.getLogin());
-        tvLocation.setText(user.getLocation());
-    }
 }

@@ -63,11 +63,11 @@ public class MainActivity extends ExampleActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Login";
+                    return "First";
                 case 1:
                     return "User";
                 case 2:
-                    return "Followers";
+                    return "Third";
                 default:
                     return null;
             }

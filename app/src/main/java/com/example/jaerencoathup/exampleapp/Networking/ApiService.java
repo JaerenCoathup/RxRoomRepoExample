@@ -1,7 +1,7 @@
 package com.example.jaerencoathup.exampleapp.Networking;
 
 import com.example.jaerencoathup.exampleapp.Networking.Models.CityForecastResponse;
-import io.reactivex.Observable;
+import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
@@ -10,6 +10,6 @@ import retrofit2.http.Query;
  */
 
 public interface ApiService {
-    @GET("/weather")
-    Observable<CityForecastResponse> getUser(@Query("q") String city);
+    @GET("weather")
+    Single<CityForecastResponse> getWeather(@Query("q") String city);
 }

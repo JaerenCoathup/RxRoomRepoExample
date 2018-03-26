@@ -12,16 +12,10 @@ public class CityForecastResponse {
 
     @SerializedName("coord")
     public Coord coord;
-    @SerializedName("base")
-    public String base;
     @SerializedName("main")
     public Main main;
-    @SerializedName("visibility")
-    public int visibility;
     @SerializedName("wind")
     public Wind wind;
-    @SerializedName("clouds")
-    public Clouds clouds;
     @SerializedName("dt")
     public int dt;
     @SerializedName("sys")
@@ -35,10 +29,14 @@ public class CityForecastResponse {
     @SerializedName("weather")
     public List<Weather> weather;
 
-    public class Coord {
+    public static class Coord {
+        @SerializedName("lon")
+        public double lon;
+        @SerializedName("lat")
+        public double lat;
     }
 
-    public class Main {
+    public static class Main {
         @SerializedName("temp")
         public double temp;
         @SerializedName("pressure")
@@ -51,34 +49,24 @@ public class CityForecastResponse {
         public double tempMax;
     }
 
-    public class Wind {
+    public static class Wind {
         @SerializedName("speed")
         public double speed;
         @SerializedName("deg")
         public int deg;
     }
 
-    public class Clouds {
+    public static class Clouds {
         @SerializedName("all")
         public int all;
     }
 
-    public class Sys {
-        @SerializedName("type")
-        public int type;
-        @SerializedName("id")
-        public int id;
-        @SerializedName("message")
-        public double message;
+    public static class Sys {
         @SerializedName("country")
         public String country;
-        @SerializedName("sunrise")
-        public int sunrise;
-        @SerializedName("sunset")
-        public int sunset;
     }
 
-    public class Weather {
+    public static class Weather {
         @SerializedName("id")
         public int id;
         @SerializedName("main")
