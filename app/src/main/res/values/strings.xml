@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ExampleApp</string>
+    <string name="title_activity_screen1">Screen1Activity</string>
+</resources>
