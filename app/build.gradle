@@ -10,6 +10,12 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
     buildTypes {
         release {
@@ -61,6 +67,8 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
+    implementation 'net.danlew:android.joda:2.9.9.3'
     implementation "android.arch.persistence.room:runtime:1.0.0"
     annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
+    implementation "android.arch.persistence.room:rxjava2:1.0.0"
 }

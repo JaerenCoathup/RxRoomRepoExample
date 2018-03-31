@@ -2,9 +2,11 @@ package com.example.jaerencoathup.exampleapp;
 
 import android.app.Application;
 
-import com.example.jaerencoathup.exampleapp.Dagger.Components.ApplicationComponent;
-import com.example.jaerencoathup.exampleapp.Dagger.Components.DaggerApplicationComponent;
+import com.example.jaerencoathup.exampleapp.dagger.components.ApplicationComponent;
+import com.example.jaerencoathup.exampleapp.dagger.components.DaggerApplicationComponent;
 import com.facebook.stetho.Stetho;
+
+import net.danlew.android.joda.JodaTimeAndroid;
 
 /**
  * Created by jaerencoathup on 15/04/2017.
@@ -21,6 +23,7 @@ public class ExampleApplication extends Application {
         super.onCreate();
         injectDependencies();
         Stetho.initializeWithDefaults(this);
+        JodaTimeAndroid.init(this);
         instance = this;
     }
 
