@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.example.jaerencoathup.exampleapp.dagger.modules.FirstModule;
 import com.example.jaerencoathup.exampleapp.ExampleApplication;
 import com.example.jaerencoathup.exampleapp.mvp.First;
-import com.example.jaerencoathup.exampleapp.persistence.ForecastEntity;
+import com.example.jaerencoathup.exampleapp.persistence.WeatherData;
 import com.example.jaerencoathup.exampleapp.R;
 import com.example.jaerencoathup.exampleapp.utils.DateUtils;
 import butterknife.BindView;
@@ -48,7 +48,7 @@ public class FirstFragment extends ExampleFragment<First.Presenter> implements F
     }
 
     @Override
-    public void showWeather(ForecastEntity weatherData) {
+    public void showWeather(WeatherData weatherData) {
         tvDayName.setText(DateUtils.weekdayToText(weatherData.dt.getDayOfWeek()));
         tvDate.setText(String.format(getString(R.string.date_format),
                 weatherData.dt.getDayOfMonth(), DateUtils.monthToText(weatherData.dt.getMonthOfYear())));

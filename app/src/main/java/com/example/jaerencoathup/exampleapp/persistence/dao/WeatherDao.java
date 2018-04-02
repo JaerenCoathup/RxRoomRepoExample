@@ -4,7 +4,8 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
-import com.example.jaerencoathup.exampleapp.persistence.ForecastEntity;
+import com.example.jaerencoathup.exampleapp.persistence.WeatherData;
+
 import io.reactivex.Maybe;
 
 /**
@@ -13,9 +14,9 @@ import io.reactivex.Maybe;
 
 @Dao
 public interface WeatherDao {
-    @Query("SELECT * FROM ForecastEntity WHERE name = :name")
-    Maybe<ForecastEntity> getWeather(String name);
+    @Query("SELECT * FROM WeatherData WHERE name = :name")
+    Maybe<WeatherData> getWeather(String name);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void saveData(ForecastEntity weatherEntity);
+    void saveData(WeatherData weatherEntity);
 }

@@ -1,6 +1,6 @@
 package com.example.jaerencoathup.exampleapp.interactors.Network;
 
-import com.example.jaerencoathup.exampleapp.persistence.ForecastEntity;
+import com.example.jaerencoathup.exampleapp.persistence.WeatherData;
 
 import io.reactivex.Single;
 
@@ -9,5 +9,5 @@ import io.reactivex.Single;
  */
 
 public interface WeatherNetworkInteractor {
-    Single<ForecastEntity> getWeatherData(String city);
+    Single<WeatherData> getWeatherData(String city);
 }

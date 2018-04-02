@@ -3,7 +3,7 @@ package com.example.jaerencoathup.exampleapp.repositories.weather;
 import com.example.jaerencoathup.exampleapp.interactors.Database.WeatherDatabaseInteractor;
 import com.example.jaerencoathup.exampleapp.interactors.Memory.WeatherMemoryInteractor;
 import com.example.jaerencoathup.exampleapp.interactors.Network.WeatherNetworkInteractor;
-import com.example.jaerencoathup.exampleapp.persistence.ForecastEntity;
+import com.example.jaerencoathup.exampleapp.persistence.WeatherData;
 import com.example.jaerencoathup.exampleapp.repositories.RepositoryTemplate;
 import com.example.jaerencoathup.exampleapp.session.SessionService;
 
@@ -41,20 +41,20 @@ public class WeatherRepositoryImpl extends RepositoryTemplate implements Weather
     }
 
     @Override
-    public Observable<ForecastEntity> getForecastData() {
+    public Observable<WeatherData> getForecastData() {
         String currentLocationName = sessionService.getLocation();
-        Observable<ForecastEntity> memoryObservable = memoryInteractor.getWeatherData();
-        Observable<ForecastEntity> databaseObservable = databaseInteractor.getWeatherData(currentLocationName);
-        Observable<ForecastEntity> networkObservable = networkInteractor.getWeatherData(currentLocationName).toObservable();
+        Observable<WeatherData> memoryObservable = memoryInteractor.getWeatherData().toObservable();
+        Observable<WeatherData> databaseObservable = databaseInteractor.getWeatherData(currentLocationName).toObservable();
+        Observable<WeatherData> networkObservable = networkInteractor.getWeatherData(currentLocationName).toObservable();
         if (!isNetworkInProgress()) {
-            dataProviderDisposable = Observable.merge(memoryObservable, Observable.concat(databaseObservable, networkObservable))
+            dataProviderDisposable = Observable.concat(memoryObservable, databaseObservable, networkObservable)
                     .filter(data -> data.name.equals(sessionService.getLocation()))
-                    .filter(ForecastEntity::isDataInDate)
+                    .filter(WeatherData::isDataInDate)
                     .firstElement()
                     .subscribe((boosterData) -> {}, this::handleNonHttpException);
         }
 
-        return memoryInteractor.getWeatherData();
+        return memoryInteractor.getWeatherDataObservable();
     }
 
     private boolean isNetworkInProgress() {

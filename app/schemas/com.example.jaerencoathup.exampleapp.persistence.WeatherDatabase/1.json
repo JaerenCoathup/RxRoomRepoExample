@@ -2,22 +2,58 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "d8d4175b9e06c5b774441e430f4b10f2",
+    "identityHash": "22740ed6c432ae0bb7cd86c17c1952a1",
     "entities": [
       {
-        "tableName": "ForecastEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`dt` INTEGER NOT NULL, `id` INTEGER NOT NULL, `name` TEXT, `cod` INTEGER NOT NULL, `lon` REAL, `lat` REAL, `temp` REAL, `pressure` INTEGER, `humidity` INTEGER, `tempMin` REAL, `tempMax` REAL, `speed` REAL, `deg` INTEGER, `country` TEXT, PRIMARY KEY(`id`))",
+        "tableName": "WeatherData",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `dt` INTEGER, `country` TEXT, `temp` REAL NOT NULL, `pressure` INTEGER NOT NULL, `humidity` INTEGER NOT NULL, `tempMin` REAL NOT NULL, `tempMax` REAL NOT NULL, `name` TEXT, `cod` INTEGER NOT NULL, `lon` REAL, `lat` REAL, `speed` REAL, `deg` INTEGER, `main` TEXT, `description` TEXT, `icon` TEXT, PRIMARY KEY(`id`))",
         "fields": [
-          {
-            "fieldPath": "dt",
-            "columnName": "dt",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
           {
             "fieldPath": "id",
             "columnName": "id",
             "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dt",
+            "columnName": "dt",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "country",
+            "columnName": "country",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "temp",
+            "columnName": "temp",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pressure",
+            "columnName": "pressure",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "humidity",
+            "columnName": "humidity",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tempMin",
+            "columnName": "tempMin",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tempMax",
+            "columnName": "tempMax",
+            "affinity": "REAL",
             "notNull": true
           },
           {
@@ -45,36 +81,6 @@
             "notNull": false
           },
           {
-            "fieldPath": "main.temp",
-            "columnName": "temp",
-            "affinity": "REAL",
-            "notNull": false
-          },
-          {
-            "fieldPath": "main.pressure",
-            "columnName": "pressure",
-            "affinity": "INTEGER",
-            "notNull": false
-          },
-          {
-            "fieldPath": "main.humidity",
-            "columnName": "humidity",
-            "affinity": "INTEGER",
-            "notNull": false
-          },
-          {
-            "fieldPath": "main.tempMin",
-            "columnName": "tempMin",
-            "affinity": "REAL",
-            "notNull": false
-          },
-          {
-            "fieldPath": "main.tempMax",
-            "columnName": "tempMax",
-            "affinity": "REAL",
-            "notNull": false
-          },
-          {
             "fieldPath": "wind.speed",
             "columnName": "speed",
             "affinity": "REAL",
@@ -87,8 +93,20 @@
             "notNull": false
           },
           {
-            "fieldPath": "sys.country",
-            "columnName": "country",
+            "fieldPath": "weather.main",
+            "columnName": "main",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "weather.description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "weather.icon",
+            "columnName": "icon",
             "affinity": "TEXT",
             "notNull": false
           }
@@ -105,7 +123,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"d8d4175b9e06c5b774441e430f4b10f2\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"22740ed6c432ae0bb7cd86c17c1952a1\")"
     ]
   }
 }

@@ -1,7 +1,9 @@
 package com.example.jaerencoathup.exampleapp.interactors.Memory;
 
-import com.example.jaerencoathup.exampleapp.persistence.ForecastEntity;
+import com.example.jaerencoathup.exampleapp.persistence.WeatherData;
 import javax.inject.Inject;
+
+import io.reactivex.Maybe;
 import io.reactivex.Observable;
 import io.reactivex.subjects.BehaviorSubject;
 
@@ -11,7 +13,8 @@ import io.reactivex.subjects.BehaviorSubject;
 
 public class WeatherMemoryInteractorImpl implements WeatherMemoryInteractor {
 
-    BehaviorSubject<ForecastEntity> observable;
+    BehaviorSubject<WeatherData> observable;
+    WeatherData weatherData;
 
     @Inject
     public WeatherMemoryInteractorImpl() {
@@ -19,12 +22,20 @@ public class WeatherMemoryInteractorImpl implements WeatherMemoryInteractor {
     }
 
     @Override
-    public Observable<ForecastEntity> getWeatherData() {
-        return observable;
+    public void saveData(WeatherData weatherData) {
+        this.weatherData = weatherData;
+        observable.onNext(weatherData);
     }
 
     @Override
-    public void saveData(ForecastEntity weatherData) {
-        observable.onNext(weatherData);
+    public Maybe<WeatherData> getWeatherData() {
+        return weatherData == null ? Maybe.empty() : Maybe.just(weatherData);
     }
+
+    @Override
+    public Observable<WeatherData> getWeatherDataObservable() {
+        return observable;
+    }
+
+
 }

@@ -11,7 +11,7 @@ import com.example.jaerencoathup.exampleapp.dagger.modules.SecondModule;
 import com.example.jaerencoathup.exampleapp.ExampleApplication;
 import com.example.jaerencoathup.exampleapp.mvp.Third;
 import com.example.jaerencoathup.exampleapp.R;
-import com.example.jaerencoathup.exampleapp.persistence.ForecastEntity;
+import com.example.jaerencoathup.exampleapp.persistence.WeatherData;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,7 +49,7 @@ public class ThirdFragment extends ExampleFragment<Third.Presenter> implements T
     }
 
     @Override
-    public void showLocation(ForecastEntity forecastEntity) {
+    public void showLocation(WeatherData forecastEntity) {
         tvLocationName.setText(String.format(getString(R.string.location_format), forecastEntity.name, forecastEntity.country));
         tvLocationCoords.setText(String.format(getString(R.string.coords_format), forecastEntity.coord.lat, forecastEntity.coord.lon));
     }

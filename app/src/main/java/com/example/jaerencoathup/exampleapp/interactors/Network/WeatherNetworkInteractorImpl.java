@@ -3,7 +3,7 @@ package com.example.jaerencoathup.exampleapp.interactors.Network;
 import com.example.jaerencoathup.exampleapp.interactors.Database.WeatherDatabaseInteractor;
 import com.example.jaerencoathup.exampleapp.networking.ApiService;
 import com.example.jaerencoathup.exampleapp.interactors.Memory.WeatherMemoryInteractor;
-import com.example.jaerencoathup.exampleapp.persistence.ForecastEntity;
+import com.example.jaerencoathup.exampleapp.persistence.WeatherData;
 import com.example.jaerencoathup.exampleapp.session.SessionService;
 
 import javax.inject.Inject;
@@ -32,9 +32,9 @@ public class WeatherNetworkInteractorImpl implements WeatherNetworkInteractor {
     }
 
     @Override
-    public Single<ForecastEntity> getWeatherData(String city) {
+    public Single<WeatherData> getWeatherData(String city) {
         return apiService.getWeather(city)
-                .map(ForecastEntity::copyFromResponse)
+                .map(WeatherData::copyFromResponse)
                 .doOnSuccess(data -> sessionService.saveLocation(data.name))
                 .doOnSuccess(databaseInteractor::saveData)
                 .doOnSuccess(memoryInteractor::saveData);

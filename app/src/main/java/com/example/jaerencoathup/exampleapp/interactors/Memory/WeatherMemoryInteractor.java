@@ -1,7 +1,8 @@
 package com.example.jaerencoathup.exampleapp.interactors.Memory;
 
-import com.example.jaerencoathup.exampleapp.persistence.ForecastEntity;
+import com.example.jaerencoathup.exampleapp.persistence.WeatherData;
 
+import io.reactivex.Maybe;
 import io.reactivex.Observable;
 
 /**
@@ -9,6 +10,7 @@ import io.reactivex.Observable;
  */
 
 public interface WeatherMemoryInteractor {
-    Observable<ForecastEntity> getWeatherData();
-    void saveData(ForecastEntity weatherData);
+    Maybe<WeatherData> getWeatherData();
+    Observable<WeatherData> getWeatherDataObservable();
+    void saveData(WeatherData weatherData);
 }

@@ -11,7 +11,7 @@ import com.example.jaerencoathup.exampleapp.persistence.typeconverters.RoomTypeC
  * Created by jaerencoathup on 30/03/2018.
  */
 
-@Database(entities = {ForecastEntity.class}, version = 1)
+@Database(entities = {WeatherData.class}, version = 1)
 @TypeConverters(RoomTypeConverters.class)
 public abstract class WeatherDatabase extends RoomDatabase {
     public abstract WeatherDao weatherDao();

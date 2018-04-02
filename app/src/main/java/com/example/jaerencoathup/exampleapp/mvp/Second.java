@@ -1,7 +1,7 @@
 package com.example.jaerencoathup.exampleapp.mvp;
 
 import com.example.jaerencoathup.exampleapp.activities.Example;
-import com.example.jaerencoathup.exampleapp.persistence.ForecastEntity;
+import com.example.jaerencoathup.exampleapp.persistence.WeatherData;
 
 /**
  * Created by jaerencoathup on 15/04/2017.
@@ -9,7 +9,7 @@ import com.example.jaerencoathup.exampleapp.persistence.ForecastEntity;
 
 public interface Second {
     interface View extends Example.View{
-        void showWind(ForecastEntity forecastEntity);
+        void showWind(WeatherData forecastEntity);
     }
 
     interface Presenter extends Example.Presenter {

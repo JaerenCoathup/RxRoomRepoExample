@@ -1,14 +1,14 @@
 package com.example.jaerencoathup.exampleapp.interactors.Database;
 
-import com.example.jaerencoathup.exampleapp.persistence.ForecastEntity;
+import com.example.jaerencoathup.exampleapp.persistence.WeatherData;
 
-import io.reactivex.Observable;
+import io.reactivex.Maybe;
 
 /**
  * Created by jaerencoathup on 30/03/2018.
  */
 
 public interface WeatherDatabaseInteractor {
-    Observable<ForecastEntity> getWeatherData(String name);
-    void saveData(ForecastEntity weatherData);
+    Maybe<WeatherData> getWeatherData(String name);
+    void saveData(WeatherData weatherData);
 }
