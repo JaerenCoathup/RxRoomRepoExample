@@ -17,48 +17,48 @@ public class CityForecastResponse {
     @SerializedName("wind")
     public Wind wind;
     @SerializedName("dt")
-    public int dt;
+    public double dt;
     @SerializedName("sys")
     public Sys sys;
     @SerializedName("id")
-    public int id;
+    public double id;
     @SerializedName("name")
     public String name;
     @SerializedName("cod")
-    public int cod;
+    public float cod;
     @SerializedName("weather")
     public List<Weather> weather;
 
     public static class Coord {
         @SerializedName("lon")
-        public double lon;
+        public float lon;
         @SerializedName("lat")
-        public double lat;
+        public float lat;
     }
 
     public static class Main {
         @SerializedName("temp")
-        public double temp;
+        public float temp;
         @SerializedName("pressure")
-        public int pressure;
+        public float pressure;
         @SerializedName("humidity")
-        public int humidity;
+        public float humidity;
         @SerializedName("temp_min")
-        public double tempMin;
+        public float tempMin;
         @SerializedName("temp_max")
-        public double tempMax;
+        public float tempMax;
     }
 
     public static class Wind {
         @SerializedName("speed")
-        public double speed;
+        public float speed;
         @SerializedName("deg")
-        public int deg;
+        public float deg;
     }
 
     public static class Clouds {
         @SerializedName("all")
-        public int all;
+        public float all;
     }
 
     public static class Sys {

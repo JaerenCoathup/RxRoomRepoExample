@@ -1,8 +1,8 @@
 package com.example.jaerencoathup.exampleapp.persistence;
 
-import android.arch.persistence.room.Embedded;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
+import androidx.room.Embedded;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import com.example.jaerencoathup.exampleapp.networking.models.CityForecastResponse;
 
@@ -18,11 +18,11 @@ public class WeatherData {
     public int id;
     public DateTime dt;
     public String country;
-    public double temp;
-    public int pressure;
-    public int humidity;
-    public double tempMin;
-    public double tempMax;
+    public float temp;
+    public float pressure;
+    public float humidity;
+    public float tempMin;
+    public float tempMax;
     public String name;
     public int cod;
     @Embedded
@@ -52,10 +52,10 @@ public class WeatherData {
 
     @Entity
     public static class Coord {
-        public double lon;
-        public double lat;
+        public float lon;
+        public float lat;
 
-        public Coord(double lon, double lat) {
+        public Coord(float lon, float lat) {
             this.lon = lon;
             this.lat = lat;
         }
@@ -63,10 +63,10 @@ public class WeatherData {
 
     @Entity
     public static class Wind {
-        public double speed;
-        public int deg;
+        public float speed;
+        public float deg;
 
-        public Wind(double speed, int deg) {
+        public Wind(float speed, float deg) {
             this.speed = speed;
             this.deg = deg;
         }

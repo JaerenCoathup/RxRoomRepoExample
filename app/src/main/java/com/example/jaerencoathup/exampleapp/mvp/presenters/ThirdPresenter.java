@@ -40,6 +40,7 @@ public class ThirdPresenter extends PresenterTemplate<Third.View> implements Thi
     @Override
     public void changeLocation(String name) {
         composites.add(networkInteractor.getWeatherData(name)
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(data -> {}, error -> view.showError()));
     }
  }

@@ -34,7 +34,7 @@ public class WeatherNetworkInteractorImpl implements WeatherNetworkInteractor {
     @Override
     public Single<WeatherData> getWeatherData(String city) {
         return apiService.getWeather(city)
-                .map(WeatherData::copyFromResponse)
+                 .map(WeatherData::copyFromResponse)
                 .doOnSuccess(data -> sessionService.saveLocation(data.name))
                 .doOnSuccess(databaseInteractor::saveData)
                 .doOnSuccess(memoryInteractor::saveData);

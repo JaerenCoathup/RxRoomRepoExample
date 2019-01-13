@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "22740ed6c432ae0bb7cd86c17c1952a1",
+    "identityHash": "6b29cc993d296bfb42c66cde3fab4f1d",
     "entities": [
       {
         "tableName": "WeatherData",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `dt` INTEGER, `country` TEXT, `temp` REAL NOT NULL, `pressure` INTEGER NOT NULL, `humidity` INTEGER NOT NULL, `tempMin` REAL NOT NULL, `tempMax` REAL NOT NULL, `name` TEXT, `cod` INTEGER NOT NULL, `lon` REAL, `lat` REAL, `speed` REAL, `deg` INTEGER, `main` TEXT, `description` TEXT, `icon` TEXT, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `dt` INTEGER, `country` TEXT, `temp` REAL NOT NULL, `pressure` REAL NOT NULL, `humidity` REAL NOT NULL, `tempMin` REAL NOT NULL, `tempMax` REAL NOT NULL, `name` TEXT, `cod` INTEGER NOT NULL, `lon` REAL, `lat` REAL, `speed` REAL, `deg` REAL, `main` TEXT, `description` TEXT, `icon` TEXT, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -35,13 +35,13 @@
           {
             "fieldPath": "pressure",
             "columnName": "pressure",
-            "affinity": "INTEGER",
+            "affinity": "REAL",
             "notNull": true
           },
           {
             "fieldPath": "humidity",
             "columnName": "humidity",
-            "affinity": "INTEGER",
+            "affinity": "REAL",
             "notNull": true
           },
           {
@@ -89,7 +89,7 @@
           {
             "fieldPath": "wind.deg",
             "columnName": "deg",
-            "affinity": "INTEGER",
+            "affinity": "REAL",
             "notNull": false
           },
           {
@@ -123,7 +123,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"22740ed6c432ae0bb7cd86c17c1952a1\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"6b29cc993d296bfb42c66cde3fab4f1d\")"
     ]
   }
 }

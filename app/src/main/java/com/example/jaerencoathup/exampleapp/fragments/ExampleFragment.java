@@ -7,11 +7,13 @@ import com.example.jaerencoathup.exampleapp.activities.Example;
 
 import javax.inject.Inject;
 
+import androidx.fragment.app.Fragment;
+
 /**
  * Created by jaerencoathup on 15/05/2017.
  */
 
-public class ExampleFragment<T extends Example.Presenter> extends android.support.v4.app.Fragment implements Example.View {
+public class ExampleFragment<T extends Example.Presenter> extends Fragment implements Example.View {
 
     @Inject
     T presenter;

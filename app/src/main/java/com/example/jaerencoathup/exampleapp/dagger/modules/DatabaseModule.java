@@ -1,6 +1,6 @@
 package com.example.jaerencoathup.exampleapp.dagger.modules;
 
-import android.arch.persistence.room.Room;
+import androidx.room.Room;
 import android.content.Context;
 
 import com.example.jaerencoathup.exampleapp.persistence.WeatherDatabase;
@@ -19,7 +19,7 @@ public class DatabaseModule {
     @Provides
     @Singleton
     public WeatherDatabase providesDatabase(Context context) {
-        WeatherDatabase database = Room.databaseBuilder(context, WeatherDatabase.class, "db")
+        WeatherDatabase database = Room.inMemoryDatabaseBuilder(context, WeatherDatabase.class)
                 .fallbackToDestructiveMigration()
                 .build();
         return database;
